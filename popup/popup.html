@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Job Automation</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo-pill">JB</div>
+        <div class="header-text">
+          <h1>BOSS Zhipin Auto Apply</h1>
+          <p class="subtitle">Set your preferences, then open and auto process jobs with one click.</p>
+        </div>
+      </header>
+
+      <section class="card">
+        <div class="card-header">
+          <span class="card-title">Search Criteria</span>
+          <span class="badge">zhipin.com</span>
+        </div>
+
+        <form id="prefs-form" class="form">
+          <label class="field">
+            <span class="field-label">Job Keywords</span>
+            <input
+              type="text"
+              id="jobKeywords"
+              placeholder="e.g. Frontend Developer / Java / QA Engineer"
+            />
+          </label>
+
+          <label class="field">
+            <span class="field-label">Location</span>
+            <input type="text" id="location" placeholder="e.g. Beijing / Shanghai / Remote" />
+          </label>
+
+          <div class="field">
+            <span class="field-label">Job Type</span>
+            <div class="toggle-group">
+              <button type="button" class="toggle-btn active" id="typeOnsite" data-value="">🏢 On-site</button>
+              <button type="button" class="toggle-btn" id="typeRemote" data-value="1902">🌐 Remote</button>
+            </div>
+          </div>
+
+          <label class="field inline">
+            <span class="field-label">Max Applications per Run</span>
+            <input
+              type="number"
+              id="maxApplicationsPerRun"
+              min="1"
+              max="100"
+              value="10"
+            />
+            <span class="field-suffix">jobs</span>
+          </label>
+
+          <button type="submit" id="startBtn" class="primary-button">
+            <span id="btnText">Save and Start Automation</span>
+          </button>
+          <button type="button" id="stopBtn" class="stop-button" style="display: none;">
+            Stop Automation
+          </button>
+        </form>
+      </section>
+
+      <p id="status" class="status">Waiting to start...</p>
+
+      <div id="logContainer" class="log-container" style="display: none;">
+        <div class="log-header">Automation Log</div>
+        <div id="logContent" class="log-content"></div>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Job Automation Extension",
+  "description": "Automate job search and applications on BOSS直聘 (zhipin.com).",
+  "version": "0.1.0",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage",
+    "scripting",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://www.zhipin.com/*"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Job Automation",
+    "default_popup": "popup/popup.html"
+  },
+  "options_ui": {
+    "page": "popup/popup.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.zhipin.com/*"],
+      "js": ["utils/helpers.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
